@@ -1,5 +1,6 @@
 from googleapiclient.discovery import build
 import json
+from connection import Mysql_connector
 
 api_key = "AIzaSyCZ2BBpo0nDibNrZm1wqAXfFVrLoWS9w6o"
 
@@ -42,4 +43,6 @@ if __name__ == "__main__":
     API = youtubeAPI()
     API.buildConnection()
     data = API.getData()
-    API.to_json(data, 'mostpopular.json')
+    
+    connection = Mysql_connector()
+    connection.insert(data)
